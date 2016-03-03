@@ -1,0 +1,12 @@
+<div class="notification-content">
+  <span class="message-icon">
+    {{messageIcon}}
+  </span>
+  <span {{action 'messageClicked'}}>
+    {{message.message}}
+  </span>
+  <span class="close-icon" {{action 'messageClosed'}}>
+    {{closeIconHTML}}
+  </span>
+</div>
+<div class="countdown" style="{{animationDurationCss}} animation-play-state: {{cssAnimationPlayProperty}}; -webkit-animation-play-state: {{cssAnimationPlayProperty}}"></div>

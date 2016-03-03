@@ -1,0 +1,22 @@
+// Countdown keyframes
+// -------------------------
+
+@keyframes countdown-animation {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0%;
+  }
+}
+
+@-webkit-keyframes countdown-animation {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0%;
+  }
+}
