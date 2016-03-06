@@ -1,18 +1,18 @@
 import Ember from 'ember';
 
 const CONFIG_PROPERTIES = {
-  closeIconHTML: '<i class="fa fa-times-circle-o"></i>',
+  closeIconHTML: '<i class="fa fa-times"></i>',
   messages:{
     success: {
-      defaultTimeout: 3000,
-      icon: '<i class="fa fa-check-circle-o"></i>'
+      timeout: 3000,
+      icon: '<span class="fa-stack fa-sm"><i class="fa fa-circle-thin fa-stack-2x"></i>  <i class="fa fa-check fa-stack-1x"></i></span>'
     },
     error: {
-      defaultTimeout: 0,
+      sticky: true,
       icon: '<span class="fa-stack fa-sm"><i class="fa fa-circle-thin fa-stack-2x"></i>  <i class="fa fa-exclamation fa-stack-1x"></i></span>'
     },
     info: {
-      defaultTimeout: 8000,
+      timeout: 8000,
       icon: '<span class="fa-stack fa-sm"><i class="fa fa-circle-thin fa-stack-2x"></i>  <i class="fa fa-info fa-stack-1x"></i></span>'
     },
   }
@@ -43,8 +43,7 @@ export default {
     return new Ember.Handlebars.SafeString(iconHTML);
   },
 
-  getDefaultTimeout(messageType){
-    let iconHTML = CONFIG_PROPERTIES['messages'][messageType]['defaultTimeout'];
-    return new Ember.Handlebars.SafeString(iconHTML);
+  getDefaultSettingForProperty(messageType, propertyName){
+    return CONFIG_PROPERTIES['messages'][messageType][propertyName];
   }
 };

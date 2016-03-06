@@ -1,20 +1,30 @@
-<button {{action 'addMessage'}}>
-Add notification
-</button>
+<div>
+  <label>Message:</label>
+  {{input value=message}}
+</div>
 
-<button {{action 'addStickyMessage'}}>
-Add sticky notification
-</button>
+<div>
+  <label>Timeout:</label>
+  {{input value=timeout type="number"}}
+</div>
 
-<button {{action 'addSuccessMessage'}}>
-Add success notification
-</button>
+<div>
+  <label>Sticky:</label>
+  {{input type="checkbox" name="sticky" checked=sticky}}
+</div>
 
+<div>
+  <label>HTML content:</label>
+  {{input type="checkbox" name="htmlContent" checked=htmlContent}}
+</div>
 
-<button {{action 'addInfoMessage'}}>
-Add info notification
-</button>
+<div>
+  <button {{action 'addMessage'}}>
+  Add notification
+  </button>
 
-
-
+  <button {{action "removeAll"}}>
+  Remove all
+  </button>
+</div>
 {{notification-panel}}
