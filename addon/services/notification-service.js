@@ -46,6 +46,21 @@ export default Ember.Service.extend({
     }
   },
 
+  addError(options){
+    options.type = 'error';
+    this.addMessage(options);
+  },
+
+  addInfo(options){
+    options.type = 'info';
+    this.addMessage(options);
+  },
+
+  addSuccess(options){
+    options.type = 'success';
+    this.addMessage(options);
+  },
+
   removeMessageFromList(message){
      this.get('messages').removeObject(message);
   },
