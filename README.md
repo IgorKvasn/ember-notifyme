@@ -1,5 +1,7 @@
 # Ember-notifyme
 
+Simple addon that adds ability to show popup notifications.
+
 # Work In Progress
 
 This README outlines the details of collaborating on this Ember addon.
