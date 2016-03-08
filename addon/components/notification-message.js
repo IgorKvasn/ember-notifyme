@@ -4,8 +4,6 @@ import configuration from '../configuration';
 
 export default Ember.Component.extend({
   classNames: ['notification-message'],
-  classNamesBindings:['message.type'],
-  notificationService: Ember.inject.service('notification-service'),
 
   layout,
 
@@ -17,7 +15,7 @@ export default Ember.Component.extend({
   closeIconHTML: null,
   messageIcon: null,
   clickable: Ember.computed.alias('message.onClick'),
-
+  
   didInsertElement(){
     this._super(...arguments);
 
@@ -41,6 +39,9 @@ export default Ember.Component.extend({
         if (message.get('htmlContent')){
           message.set('message', new Ember.Handlebars.SafeString(message.get('message')));
         }
+
+        Ember.$(this.element).addClass(this.get('message.type'));
+
     });
   },
 
