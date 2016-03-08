@@ -27,7 +27,7 @@
   "browser": false,
   "boss": true,
   "curly": true,
-  "debug": false,
+  "debug": true,
   "devel": false,
   "eqeqeq": true,
   "evil": true,
