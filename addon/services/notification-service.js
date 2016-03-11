@@ -46,17 +46,20 @@ export default Ember.Service.extend({
     }
   },
 
-  addError(options){
+  error(message, options){
     options.type = 'error';
+    options.message = message;
     this.addMessage(options);
   },
 
-  addInfo(options){
+  info(message, options){
+    options.message = message;
     options.type = 'info';
     this.addMessage(options);
   },
 
-  addSuccess(options){
+  success(message, options){
+    options.message = message;
     options.type = 'success';
     this.addMessage(options);
   },
@@ -65,13 +68,13 @@ export default Ember.Service.extend({
      this.get('messages').removeObject(message);
   },
 
-  markMessageForRemoval(message){
+  removeMessage(message){
       message.set('removeMe', true);
       Ember.run.cancel(message.get('closeTimer'));
   },
 
   removeAll(){
-    this.get('messages').forEach((msg)=>{this.markMessageForRemoval(msg);});
+    this.get('messages').forEach((msg)=>{this.removeMessage(msg);});
   },
 
   startMessageTimer(message){
@@ -81,7 +84,7 @@ export default Ember.Service.extend({
     message.set('startTimeoutTime', Date.now());
 
     let timer = Ember.run.later(this, () => {
-        this.markMessageForRemoval(message);
+        this.removeMessage(message);
     }, message.get('timeout'));
 
     message.set('closeTimer', timer);
