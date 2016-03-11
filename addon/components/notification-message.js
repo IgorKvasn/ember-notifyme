@@ -15,7 +15,7 @@ export default Ember.Component.extend({
   closeIconHTML: null,
   messageIcon: null,
   clickable: Ember.computed.alias('message.onClick'),
-  
+
   didInsertElement(){
     this._super(...arguments);
 
@@ -107,7 +107,7 @@ export default Ember.Component.extend({
      if (Ember.isPresent(onClose)){
        onClose(message);
      }
-     this.get('notificationService').markMessageForRemoval(message);
+     this.get('notificationService').removeMessage(message);
     }
 
   }
