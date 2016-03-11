@@ -47,18 +47,21 @@ export default Ember.Service.extend({
   },
 
   error(message, options){
+    options = options || {};
     options.type = 'error';
     options.message = message;
     this.addMessage(options);
   },
 
   info(message, options){
+    options = options || {};
     options.message = message;
     options.type = 'info';
     this.addMessage(options);
   },
 
   success(message, options){
+    options = options || {};
     options.message = message;
     options.type = 'success';
     this.addMessage(options);
