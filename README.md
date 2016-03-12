@@ -2,11 +2,19 @@
 
 Simple addon that adds ability to show popup notifications.
 
-# Work In Progress
-
-This README outlines the details of collaborating on this Ember addon.
+### Features
+- countdown (notification message will dissapear after certain timeout) + countdown progressbar
+- onClick and onClose callbacks
+- animations (VelocityJS)
+- full customization of icons (by default FontAwesome is supported, but *any* HTML element can be used instead)
+- supports HTML content
 
 ## Installation
+
+ `ember install Ember-notifyme`
+
+
+## Addon Development
 
 * `git clone` this repository
 * `npm install`
