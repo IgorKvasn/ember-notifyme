@@ -4,7 +4,7 @@ let CONFIG_PROPERTIES = {
   closeIconHTML: '<i class="fa fa-times"></i>',
   messages:{
     success: {
-      timeout: 3000,
+      timeout: 8000,
       icon: '<span class="fa-stack fa-sm"><i class="fa fa-circle-thin fa-stack-2x"></i>  <i class="fa fa-check fa-stack-1x"></i></span>'
     },
     error: {
