@@ -29,9 +29,7 @@
     "ember-cli-release": "0.2.8",
     "ember-cli-sri": "^2.0.0",
     "ember-cli-uglify": "^1.2.0",
-    "ember-cli-velocity": "0.4.0",
     "ember-cli-windows-addon": "^1.3.1",
-    "ember-data": "^2.3.0",
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
@@ -39,8 +37,7 @@
     "ember-radio-button": "1.0.7",
     "ember-resolver": "^2.0.3",
     "ember-try": "^0.1.2",
-    "loader.js": "^4.0.0",
-    "velocity-animate": "1.2.3"
+    "loader.js": "^4.0.0"
   },
   "keywords": [
     "ember-addon",
@@ -51,7 +48,8 @@
     "ember-cli-htmlbars": "^1.0.1",
     "ember-resolver": "^2.0.3",
     "ember-try": "^0.1.2",
-    "loader.js": "^4.0.0"
+    "loader.js": "^4.0.0",
+    "velocity-animate": "1.2.3"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
