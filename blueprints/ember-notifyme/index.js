@@ -5,6 +5,8 @@ module.exports = {
   normalizeEntityName: function () {
   },
   afterInstall: function () {
-    return this.addBowerPackageToProject('velocity-animate');
+    return this.addPackageToProject(
+          {name: 'velocity-animate', target: '1.2.3'}
+    );
   }
 };
