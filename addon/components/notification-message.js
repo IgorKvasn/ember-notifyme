@@ -48,7 +48,7 @@ export default Ember.Component.extend({
   removeMeObserver: Ember.observer('message.removeMe', function(){
     if (this.get('message.removeMe')===true){
       this.animateRemoval(()=>{
-        this.get('notificationService').removeMessageFromList(this.get('message'));
+        this.notifications.removeMessageFromList(this.get('message'));
       });
     }
   }),

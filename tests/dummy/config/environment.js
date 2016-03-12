@@ -19,6 +19,20 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['ember-notifyme']={
+    messages:{
+      success: {
+        timeout: 8000,
+      },
+      error: {
+        sticky: true,
+      },
+      info: {
+        timeout: 3000,
+      },
+    }
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

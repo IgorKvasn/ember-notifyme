@@ -6,6 +6,7 @@ message: "Hello world!",
 timeout: 3000,
 sticky: false,
 htmlContent:false,
+messageType:'success',
 
   actions: {
     removeAll(){
@@ -14,6 +15,7 @@ htmlContent:false,
 
     addMessage() {
       this.notifications.addMessage({
+        type:this.get('messageType'),
         message: this.get('message'),
         timeout: this.get('timeout'),
         sticky: this.get('sticky'),

@@ -4,6 +4,31 @@
 </div>
 
 <div>
+  <label>Message type:</label>
+<ul>
+  <li>
+    <label>Info</label>
+    {{radio-button
+      value="info"
+      groupValue=messageType}}
+  </li>
+  <li>
+    <label>Success</label>
+        {{radio-button
+        value="success"
+        groupValue=messageType}}
+  </li>
+  <li>
+    <label>Error</label>
+        {{radio-button
+        value="error"
+        groupValue=messageType}}
+  </li>
+</ul>
+
+</div>
+
+<div>
   <label>Timeout:</label>
   {{input value=timeout type="number"}}
 </div>

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const CONFIG_PROPERTIES = {
+let CONFIG_PROPERTIES = {
   closeIconHTML: '<i class="fa fa-times"></i>',
   messages:{
     success: {
@@ -18,15 +18,21 @@ const CONFIG_PROPERTIES = {
   }
 };
 
+function deepMerge(target, source) {
+    for (var prop in source){
+        if (prop in target){
+          deepMerge(target[prop], source[prop]);
+        } else {
+          target[prop] = source[prop];
+        }
+    }
+    return target;
+}
+
 export default {
   load(config) {
-    let hasOwnProperty = ({}).hasOwnProperty;
-    for (let property in config) {
-      if (hasOwnProperty.call(config, property)) {
 
-        CONFIG_PROPERTIES[property] = config[property];
-      }
-    }
+  CONFIG_PROPERTIES= deepMerge(CONFIG_PROPERTIES, config);
   },
 
   getConfig(){
