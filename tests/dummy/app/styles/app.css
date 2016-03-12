@@ -1,0 +1,15 @@
+.notification-message.success{
+  background-color: greenyellow;
+}
+
+.notification-message.info{
+  background-color: green;
+}
+
+.notification-message.error{
+  background-color: red;
+}
+
+.notification-message.info .countdown{
+  background-color: white;
+}

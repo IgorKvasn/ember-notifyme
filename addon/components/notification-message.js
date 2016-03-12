@@ -56,14 +56,14 @@ export default Ember.Component.extend({
   mouseEnter() {
     if (!this.get('message.sticky')){
       this.stopCountdown();
-      this.get('notificationService').pauseMessageTimeout(this.get('message'));
+        this.notifications.pauseMessageTimeout(this.get('message'));
     }
   },
 
   mouseLeave() {
     if (!this.get('message.sticky')){
       this.startCountdown();
-      this.get('notificationService').startMessageTimer(this.get('message'));
+        this.notifications.startMessageTimer(this.get('message'));
     }
   },
 
@@ -107,7 +107,7 @@ export default Ember.Component.extend({
      if (Ember.isPresent(onClose)){
        onClose(message);
      }
-     this.get('notificationService').removeMessage(message);
+       this.notifications.removeMessage(message);
     }
 
   }

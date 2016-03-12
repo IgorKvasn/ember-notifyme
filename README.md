@@ -3,7 +3,7 @@
 Simple addon that adds ability to show popup notifications.
 
 ### Features
-- countdown (notification message will dissapear after certain timeout) + countdown progressbar
+- countdown (notification message will disappear after certain timeout) + countdown progress bar
 - onClick and onClose callbacks
 - animations (VelocityJS)
 - full customization of icons (by default *FontAwesome* is supported, but *any* HTML element can be used instead - e.g. Glyphicons, IcoMoon,...)
@@ -28,7 +28,7 @@ this.notifications.addMessage({
 });
 ```
 
-or use convinience methods `success`, `info` or `error`:
+or use convenience methods `success`, `info` or `error`:
 ```
 this.notifications.info("My info message", options);
 ```
@@ -38,8 +38,8 @@ this.notifications.info("My info message", options);
 | ------------- |-------------| -----|
 | type      | type of message; possible values: 'info', 'error', 'success'; CSS class of the same name will be added to notification message to allow styling | 'info' |
 | message      | text of a message      |    |
-| timeout | time before notification dissapears      |    based on notification type (errors have no timeout, otherwise 8000 milis) |
-| sticky | if true, notification will not dissapear      |    based on notification type (errors are sticky=true) |
+| timeout | time before notification disappears      |    based on notification type (errors have no timeout, otherwise 8000 milis) |
+| sticky | if true, notification will not disappear      |    based on notification type (errors are sticky=true) |
 | htmlContent | enabled/disables HTML content in message (Warning: be sure to properly escape `message` if this option is set to `true`)    |   false |
 | onClose | callback triggered when user clicks on X button to close the notification    |    |
 | onClick | callback triggered when user clicks on the notification    |    |
@@ -47,7 +47,7 @@ this.notifications.info("My info message", options);
 ### Global configuration
 
 Some options can be globally configured so you do not have to set the same options over and over. Additionally icons can be configured as well.
-In `config/environment.js` you can configure globals such as (every entry is optional, eg. if you do not specify succcess timeout, default will be used):
+In `config/environment.js` you can configure globals such as (every entry is optional, eg. if you do not specify success timeout, default will be used):
 ```
 ENV['ember-notifyme']={
   closeIconHTML: '<i class="fa fa-times"></i>',
