@@ -7,6 +7,6 @@ export function initialize(/* application */) {
 }
 
 export default {
-  name: 'read-config',
+  name: 'ember-notifyme-read-config',
   initialize
 };
