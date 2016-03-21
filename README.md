@@ -34,6 +34,18 @@ or use convenience methods `success`, `info` or `error`:
 ```
 this.notifications.info("My info message", options);
 ```
+
+To hide a notification:
+```
+this.notifications.removeMessage(message);
+```
+
+
+To hide all notifications:
+```
+ this.notifications.removeAll();
+```
+
 Note: by default, FontAwesome must be included in your project - to use different icon set, see [Global Configuration](https://github.com/IgorKvasn/ember-notifyme/blob/master/README.md#global-configuration) section below for a configuration hints
 
 ### List of available options:
