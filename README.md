@@ -46,7 +46,19 @@ To hide all notifications:
  this.notifications.removeAll();
 ```
 
-Note: by default, FontAwesome must be included in your project - to use different icon set, see [Global Configuration](https://github.com/IgorKvasn/ember-notifyme/blob/master/README.md#global-configuration) section below for a configuration hints
+**Note:** by default, **FontAwesome** must be included in your project - to use different icon set, see [Global Configuration](https://github.com/IgorKvasn/ember-notifyme/blob/master/README.md#global-configuration) section below for a configuration hints
+
+### Callbacks
+You can also use callbacks `onClick` and `onClose` that take a function with one parameter (message that triggered this callback);
+
+```
+this.notifications.addMessage({
+  message: "My message"
+  onClick(message){
+    alert('message clicked!');
+  }
+});
+```
 
 ### List of available options:
 
