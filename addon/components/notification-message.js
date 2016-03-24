@@ -86,7 +86,8 @@ export default Ember.Component.extend({
           width: $element.width()
         },
         {
-          duration: this.get('message.timeout')
+          duration: this.get('message.timeout'),
+          easing: "linear"
         });
  });
   },
