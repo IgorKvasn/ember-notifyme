@@ -8,7 +8,7 @@ let CONFIG_PROPERTIES = {
       icon: '<span class="fa-stack fa-sm"><i class="fa fa-circle-thin fa-stack-2x"></i>  <i class="fa fa-check fa-stack-1x"></i></span>'
     },
     error: {
-      sticky: true,
+      timeout: 8000,
       icon: '<span class="fa-stack fa-sm"><i class="fa fa-circle-thin fa-stack-2x"></i>  <i class="fa fa-exclamation fa-stack-1x"></i></span>'
     },
     info: {
