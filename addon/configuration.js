@@ -32,7 +32,7 @@ function deepMerge(target, source) {
 export default {
   load(config) {
 
-  CONFIG_PROPERTIES= deepMerge(CONFIG_PROPERTIES, config);
+  CONFIG_PROPERTIES= deepMerge(config, CONFIG_PROPERTIES);
   },
 
   getConfig(){
