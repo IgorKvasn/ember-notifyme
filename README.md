@@ -56,6 +56,19 @@ this.notifications.addMessage({
   message: "My message"
   onClick(message){
     alert('message clicked!');
+  },
+  onClose(message){
+    alert('message closed!');
+  }
+});
+```
+
+Another callback available is `onCloseTimeout` that is called whenever notification's timeout expires and the notification message is auto-closing.
+```
+this.notifications.addMessage({
+  message: "My message"
+  onCloseTimeout(message){
+    alert('message timeout expired');
   }
 });
 ```
@@ -69,8 +82,10 @@ this.notifications.addMessage({
 | timeout | time before notification disappears      |    based on notification type (errors have no timeout, otherwise 8000 milis) |
 | sticky | if true, notification will not disappear      |    based on notification type (errors are sticky=true) |
 | htmlContent | enabled/disables HTML content in message (Warning: be sure to properly escape `message` if this option is set to `true`)    |   false |
+| closeOnClick | if set to `true`, message is closed when user clicks on it    |   false |
 | onClose | callback triggered when user clicks on X button to close the notification    |    |
 | onClick | callback triggered when user clicks on the notification    |    |
+| onCloseTimeout | callback triggered when message timeout expires and message is automatically closed (see _timeout_ option above)    |false    |
 
 ### Global configuration
 

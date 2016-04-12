@@ -7,6 +7,7 @@ timeout: 3000,
 sticky: false,
 htmlContent:false,
 messageType:'success',
+closeOnClick: true,
 
   actions: {
 
@@ -21,6 +22,7 @@ messageType:'success',
         timeout: this.get('timeout'),
         sticky: this.get('sticky'),
         htmlContent: this.get('htmlContent'),
+        closeOnClick: this.get('closeOnClick'),
         onClose(){
           alert('closed');
         },

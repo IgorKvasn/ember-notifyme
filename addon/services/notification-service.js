@@ -37,7 +37,8 @@ export default Ember.Service.extend({
            onClick: options.onClick || Ember.K,
            onClose: options.onClose || Ember.K,
            htmlContent: options.htmlContent,
-           onCloseTimeout: options.onCloseTimeout || Ember.K
+           onCloseTimeout: options.onCloseTimeout || Ember.K,
+           closeOnClick: options.closeOnClick
        });
 
     this.get('messages').addObject(messageObject);
