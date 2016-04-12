@@ -9,6 +9,7 @@ htmlContent:false,
 messageType:'success',
 
   actions: {
+
     removeAll(){
       this.notifications.removeAll();
     },
@@ -25,7 +26,10 @@ messageType:'success',
         },
         onClick(){
           alert('clicked');
-        }
+        },
+        onCloseTimeout(){
+          alert('message closed on timeout');
+        },
       });
     }
 }

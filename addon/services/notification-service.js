@@ -34,9 +34,10 @@ export default Ember.Service.extend({
            type: options.type,
            timeout: timeout,
            sticky,
-           onClick: options.onClick,
-           onClose: options.onClose,
-           htmlContent: options.htmlContent
+           onClick: options.onClick || Ember.K,
+           onClose: options.onClose || Ember.K,
+           htmlContent: options.htmlContent,
+           onCloseTimeout: options.onCloseTimeout || Ember.K
        });
 
     this.get('messages').addObject(messageObject);
@@ -88,6 +89,9 @@ export default Ember.Service.extend({
 
     let timer = Ember.run.later(this, () => {
         this.removeMessage(message);
+
+        let onCloseTimeout =  message.get('onCloseTimeout');
+        onCloseTimeout(message);
     }, message.get('timeout'));
 
     message.set('closeTimer', timer);

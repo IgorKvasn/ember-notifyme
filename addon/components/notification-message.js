@@ -97,18 +97,14 @@ export default Ember.Component.extend({
    messageClicked(){
      let message = this.get('message');
      let onClick =  message.get('onClick');
-     if (Ember.isPresent(onClick)){
-       onClick(message);
-     }
+     onClick(message);     
    },
 
    messageClosed(){
      let message = this.get('message');
      let onClose =  message.get('onClose');
-     if (Ember.isPresent(onClose)){
-       onClose(message);
-     }
-       this.notifications.removeMessage(message);
+     onClose(message);
+     this.notifications.removeMessage(message);
     }
 
   }
