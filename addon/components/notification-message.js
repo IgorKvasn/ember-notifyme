@@ -28,16 +28,16 @@ export default Ember.Component.extend({
         let sticky = message.get('sticky');
         if (!sticky){
           let animationDurationCss = `animation-duration: ${timeout}ms; -webkit-animation-duration: ${timeout}ms;`;
-          this.set('animationDurationCss', new Ember.Handlebars.SafeString(animationDurationCss));
+          this.set('animationDurationCss', Ember.String.htmlSafe(animationDurationCss));
         }
 
-        let messageIconSafe = new Ember.Handlebars.SafeString(configuration.getMessageIcon(this.get('message.type')));
+        let messageIconSafe = Ember.String.htmlSafe(configuration.getMessageIcon(this.get('message.type')));
         this.set('messageIcon', messageIconSafe);
 
         this.set('closeIconHTML', configuration.getCloseIconHTML());
 
         if (message.get('htmlContent')){
-          message.set('message', new Ember.Handlebars.SafeString(message.get('message')));
+          message.set('message', Ember.String.htmlSafe(message.get('message')));
         }
 
         Ember.$(this.element).addClass(this.get('message.type'));
@@ -99,7 +99,7 @@ export default Ember.Component.extend({
      let onClick =  message.get('onClick');
      onClick(message);
 
-     if (message.get('closeOnClick') === true){       
+     if (message.get('closeOnClick') === true){
        this.notifications.removeMessage(message);
      }
    },

@@ -41,12 +41,12 @@ export default {
 
   getCloseIconHTML(){
     let closeIconHTML = CONFIG_PROPERTIES['closeIconHTML'] || '<i class="fa fa-times-circle-o"></i>';
-    return new Ember.Handlebars.SafeString(closeIconHTML);
+    return Ember.String.htmlSafe(closeIconHTML);
   },
 
   getMessageIcon(messageType){
     let iconHTML = CONFIG_PROPERTIES['messages'][messageType]['icon'];
-    return new Ember.Handlebars.SafeString(iconHTML);
+    return Ember.String.htmlSafe(iconHTML);
   },
 
   getDefaultSettingForProperty(messageType, propertyName){
