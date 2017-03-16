@@ -6,8 +6,8 @@ export default Ember.Object.extend({
   type: null,
   timeout: 0,
   sticky: false,
-  onClick: Ember.K,
-  onClose: Ember.K,
+  onClick(){},
+  onClose(){},
 
   //internal
   closeTimer: null,

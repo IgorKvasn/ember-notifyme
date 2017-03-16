@@ -34,10 +34,10 @@ export default Ember.Service.extend({
            type: options.type,
            timeout: timeout,
            sticky,
-           onClick: options.onClick || Ember.K,
-           onClose: options.onClose || Ember.K,
+           onClick: options.onClick || function(){},
+           onClose: options.onClose || function(){},
            htmlContent: options.htmlContent,
-           onCloseTimeout: options.onCloseTimeout || Ember.K,
+           onCloseTimeout: options.onCloseTimeout || function(){},
            closeOnClick: options.closeOnClick
        });
 
