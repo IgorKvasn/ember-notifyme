@@ -45,11 +45,17 @@ export default {
   },
 
   getMessageIcon(messageType){
+    if (Ember.isNone(CONFIG_PROPERTIES['messages'][messageType])){
+      return null;
+    }
     let iconHTML = CONFIG_PROPERTIES['messages'][messageType]['icon'];
     return Ember.String.htmlSafe(iconHTML);
   },
 
   getDefaultSettingForProperty(messageType, propertyName){
+    if (Ember.isNone(CONFIG_PROPERTIES['messages'][messageType])){
+      return null;
+    }
     return CONFIG_PROPERTIES['messages'][messageType][propertyName];
   }
 };
