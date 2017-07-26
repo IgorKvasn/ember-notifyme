@@ -8,6 +8,7 @@ sticky: false,
 htmlContent:false,
 messageType:'success',
 closeOnClick: true,
+customType: null,
 
   actions: {
 
@@ -16,8 +17,12 @@ closeOnClick: true,
     },
 
     addMessage() {
+      let type = this.get('messageType');
+      if (type === 'custom'){
+        type = this.get('customType');
+      }
       this.notifications.addMessage({
-        type:this.get('messageType'),
+        type,
         message: this.get('message'),
         timeout: this.get('timeout'),
         sticky: this.get('sticky'),

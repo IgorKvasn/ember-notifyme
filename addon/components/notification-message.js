@@ -4,6 +4,7 @@ import configuration from '../configuration';
 
 export default Ember.Component.extend({
   classNames: ['notification-message'],
+  classNameBindings: ['message.type'],
 
   layout,
 
@@ -39,8 +40,6 @@ export default Ember.Component.extend({
         if (message.get('htmlContent')){
           message.set('message', Ember.String.htmlSafe(message.get('message')));
         }
-
-        Ember.$(this.element).addClass(this.get('message.type'));
 
     });
   },
