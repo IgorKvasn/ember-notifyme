@@ -32,7 +32,11 @@ export default Ember.Component.extend({
           this.set('animationDurationCss', Ember.String.htmlSafe(animationDurationCss));
         }
 
-        let messageIconSafe = Ember.String.htmlSafe(configuration.getMessageIcon(this.get('message.type')));
+        let messageIconSafe = message.get('icon');
+        if (Ember.isEmpty(messageIconSafe)){
+          messageIconSafe = configuration.getMessageIcon(this.get('message.type'));
+        }
+        messageIconSafe = Ember.String.htmlSafe(messageIconSafe);
         this.set('messageIcon', messageIconSafe);
 
         this.set('closeIconHTML', configuration.getCloseIconHTML());

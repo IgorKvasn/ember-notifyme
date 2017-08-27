@@ -38,7 +38,8 @@ export default Ember.Service.extend({
            onClose: options.onClose || function(){},
            htmlContent: options.htmlContent,
            onCloseTimeout: options.onCloseTimeout || function(){},
-           closeOnClick: options.closeOnClick
+           closeOnClick: options.closeOnClick,
+           icon: options.icon
        });
 
     this.get('messages').addObject(messageObject);

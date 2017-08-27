@@ -33,6 +33,7 @@ module.exports = function(environment) {
         sticky: true,
       },
       info: {
+        icon: '<span class="fa-stack fa-sm"><i class="fa fa-circle-thin fa-stack-2x"></i>  <i class="fa fa-exclamation fa-stack-1x"></i></span>',
         timeout: 3000,
       },
       hello:{

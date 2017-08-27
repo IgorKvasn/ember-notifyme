@@ -8,6 +8,7 @@ export default Ember.Object.extend({
   sticky: false,
   onClick(){},
   onClose(){},
+  icon: null,
 
   //internal
   closeTimer: null,

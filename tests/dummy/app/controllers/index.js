@@ -9,6 +9,7 @@ htmlContent:false,
 messageType:'success',
 closeOnClick: true,
 customType: null,
+customIcon: null,
 
   actions: {
 
@@ -28,6 +29,7 @@ customType: null,
         sticky: this.get('sticky'),
         htmlContent: this.get('htmlContent'),
         closeOnClick: this.get('closeOnClick'),
+        icon: this.get('customIcon'),
         onClose(){
           alert('closed');
         },
