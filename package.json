@@ -1,6 +1,6 @@
 {
   "name": "ember-notifyme",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "Show notifications in your Ember app.",
   "directories": {
     "doc": "doc",
