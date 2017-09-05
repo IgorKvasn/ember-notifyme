@@ -39,7 +39,8 @@ export default Ember.Service.extend({
            htmlContent: options.htmlContent,
            onCloseTimeout: options.onCloseTimeout || function(){},
            closeOnClick: options.closeOnClick,
-           icon: options.icon
+           icon: options.icon,
+           id: options.id
        });
 
     this.get('messages').addObject(messageObject);
@@ -79,8 +80,12 @@ export default Ember.Service.extend({
       Ember.run.cancel(message.get('closeTimer'));
   },
 
-  removeAll(){
-    this.get('messages').forEach((msg)=>{this.removeMessage(msg);});
+  removeAll(exceptIdsArray){
+    this.get('messages').forEach((msg)=>{
+      if (Ember.isNone(exceptIdsArray) || !exceptIdsArray.includes(msg.id)){
+        this.removeMessage(msg);
+      }
+    });
   },
 
   startMessageTimer(message){

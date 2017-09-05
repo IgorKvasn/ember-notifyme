@@ -36,6 +36,11 @@
 </div>
 
 <div>
+  <label>ID:</label>
+  {{input value=id}}
+</div>
+
+<div>
   <label>Timeout:</label>
   {{input value=timeout type="number"}}
 </div>
@@ -69,6 +74,10 @@
   <button {{action "removeAll"}}>
   Remove all
   </button>
+  <div>
+    <label>Except IDs (comma separated):</label>
+    {{input value=exceptIds}}
+  </div>
 </div>
 
 <p>
