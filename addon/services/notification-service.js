@@ -48,6 +48,8 @@ export default Ember.Service.extend({
 		if (!this.get('message.sticky')) {
 			this.startMessageTimer(messageObject);
 		}
+
+    return messageObject;
 	},
 
 	error(message, options) {
