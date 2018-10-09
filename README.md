@@ -11,7 +11,8 @@ DEMO: [http://igorkvasn.github.io/ember-notifyme/](http://igorkvasn.github.io/em
 - full customization of icons (by default *FontAwesome* is supported, but *any* HTML element can be used instead - e.g. Glyphicons, IcoMoon,...)
 - supports HTML content
 
-## Installation
+Installation
+------------------------------------------------------------------------------
 
  `ember install ember-notifyme`
 
@@ -117,19 +118,20 @@ ENV['ember-notifyme']={
 * `npm install`
 * `bower install`
 
-## Running
+### Linting
 
 * `ember server`
 * Visit your app at http://localhost:4200.
 
-## Running Tests
+### Running tests
 
 * `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
 
-## Building
+### Running the dummy application
 
-* `ember build`
+* `ember serve`
+* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
