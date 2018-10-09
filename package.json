@@ -48,7 +48,10 @@
     "ember-addon",
     "notifications"
   ],
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "IgorKvasn/ember-notifyme"
+  },
   "license": "MIT",
   "author": "Igor Kvasnicka",
   "directories": {
