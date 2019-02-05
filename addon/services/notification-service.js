@@ -109,8 +109,8 @@ export default Service.extend({
   },
 
   removeAll(exceptIdsArray, force = false) {
-    while (this.get('messages.length') > 0){
-      let msg = this.get('messages').objectAt(0);
+    for (let i = this.get('messages.length') - 1; i >= 0; i--) {
+      let msg = this.get('messages').objectAt(i);
       if (isNone(exceptIdsArray) || !exceptIdsArray.includes(msg.id)) {
         this.removeMessage(msg, force);
       }
@@ -143,7 +143,5 @@ export default Service.extend({
     let remainingTimeout = message.get('timeout') - (Date.now() - message.get('startTimeoutTime'));
     message.set('timeout', remainingTimeout);
   }
-
-
 
 });
