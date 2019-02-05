@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { isNone } from '@ember/utils';
+import { htmlSafe } from '@ember/template';
 
 let CONFIG_PROPERTIES = {
   closeIconHTML: '<i class="fa fa-times"></i>',
@@ -113,19 +114,19 @@ export default {
 
   getCloseIconHTML(){
     let closeIconHTML = CONFIG_PROPERTIES['closeIconHTML'] || '<i class="fa fa-times-circle-o"></i>';
-    return Ember.String.htmlSafe(closeIconHTML);
+    return htmlSafe(closeIconHTML);
   },
 
   getMessageIcon(messageType){
-    if (Ember.isNone(CONFIG_PROPERTIES['messages'][messageType])){
+    if (isNone(CONFIG_PROPERTIES['messages'][messageType])){
       return null;
     }
     let iconHTML = CONFIG_PROPERTIES['messages'][messageType]['icon'];
-    return Ember.String.htmlSafe(iconHTML);
+    return htmlSafe(iconHTML);
   },
 
   getDefaultSettingForProperty(messageType, propertyName){
-    if (Ember.isNone(CONFIG_PROPERTIES['messages'][messageType])){
+    if (isNone(CONFIG_PROPERTIES['messages'][messageType])){
       return null;
     }
     return CONFIG_PROPERTIES['messages'][messageType][propertyName];

@@ -1,17 +1,19 @@
-import Ember from 'ember';
+import { isNone, isPresent } from '@ember/utils';
+import { A } from '@ember/array';
+import Service from '@ember/service';
 import NotificationMessage from '../objects/notification-message';
 import configuration from '../configuration';
 
-export default Ember.Service.extend({
+export default Service.extend({
 
-	messages: Ember.A([]),
+	messages: A([]),
 
 	_getPropertyOrDefault(options, propertyName) {
 		//first try to obtain property value from per-message definition
 		let value = options[propertyName];
 
 		//if not available, use global (default) settings
-		if (Ember.isNone(value)) {
+		if (isNone(value)) {
 			value = configuration.getDefaultSettingForProperty(options.type, propertyName);
 		}
 
@@ -79,7 +81,7 @@ export default Ember.Service.extend({
 
 	removeMessage(message) {
 		message.set('removeMe', true);
-		Ember.run.cancel(message.get('closeTimer'));
+		clearTimeout(message.get('closeTimer'));
 	},
 
 	removeMessageById(messageId) {
@@ -87,14 +89,14 @@ export default Ember.Service.extend({
 			return msg.get('id') === messageId;
 		});
 
-		if (Ember.isPresent(message)) {
+		if (isPresent(message)) {
 			this.removeMessage(message);
 		}
 	},
 
 	removeAll(exceptIdsArray) {
 		this.get('messages').forEach((msg) => {
-			if (Ember.isNone(exceptIdsArray) || !exceptIdsArray.includes(msg.id)) {
+			if (isNone(exceptIdsArray) || !exceptIdsArray.includes(msg.id)) {
 				this.removeMessage(msg);
 			}
 		});
@@ -106,7 +108,7 @@ export default Ember.Service.extend({
 		}
 		message.set('startTimeoutTime', Date.now());
 
-		let timer = Ember.run.later(this, () => {
+		let timer = setTimeout(() => {
 			this.removeMessage(message);
 
 			let onCloseTimeout = message.get('onCloseTimeout');
@@ -121,7 +123,7 @@ export default Ember.Service.extend({
 			return;
 		}
 
-		Ember.run.cancel(message.get('closeTimer'));
+		clearTimeout(message.get('closeTimer'));
 
 		let remainingTimeout = message.get('timeout') - (Date.now() - message.get('startTimeoutTime'));
 		message.set('timeout', remainingTimeout);

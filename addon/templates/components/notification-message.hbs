@@ -3,17 +3,23 @@
     {{messageIcon}}
   </span>
 </div>
-<div class="notification-content {{if clickable 'clickable-message'}}" {{action 'messageClicked'}}>
+<div
+  class="notification-content {{if clickable "clickable-message"}}"
+  role="button"
+  {{action "messageClicked"}}
+>
   <span class="message-text">
     {{!-- messageContent is escaped during component didInsertElement, because it also supports HTML content--}}
     {{#if message.htmlContent}}
+      {{! template-lint-disable no-triple-curlies }}
       {{{message.message}}}
+      {{! template-lint-enable no-triple-curlies }}
     {{else}}
       {{message.message}}
     {{/if}}
- </span>
+  </span>
 </div>
-<span class="close-icon" {{action 'messageClosed'}}>
+<span class="close-icon" role="button" {{action "messageClosed"}}>
   {{closeIconHTML}}
 </span>
 {{#if animationDurationCss}}

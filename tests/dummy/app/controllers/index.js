@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import { isPresent } from '@ember/utils';
+import Controller from '@ember/controller';
 
-export default Ember.Controller.extend({
+export default Controller.extend({
 
   message: "Hello world!",
   timeout: 3000,
@@ -18,7 +19,7 @@ export default Ember.Controller.extend({
     removeAll() {
       let exceptIds = this.get('exceptIds');
 
-      if (Ember.isPresent(exceptIds)) {
+      if (isPresent(exceptIds)) {
         exceptIds = exceptIds.split(',').map((s) => {
           return s.trim()
         });
