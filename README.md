@@ -87,6 +87,7 @@ this.notifications.addMessage({
 | onClose | callback triggered when user clicks on X button to close the notification    |    |
 | onClick | callback triggered when user clicks on the notification    |    |
 | onCloseTimeout | callback triggered when message timeout expires and message is automatically closed (see _timeout_ option above)    |false    |
+|data | any arbitrary data |
 
 ### Global configuration
 

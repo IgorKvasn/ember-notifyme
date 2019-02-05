@@ -28,6 +28,18 @@ export default Controller.extend({
       this.notifications.removeAll(exceptIds);
     },
 
+    removeAllForce(){
+      let exceptIds = this.get('exceptIds');
+
+      if (isPresent(exceptIds)) {
+        exceptIds = exceptIds.split(',').map((s) => {
+          return s.trim()
+        });
+      }
+
+      this.notifications.removeAll(exceptIds, true);
+    },
+
     addMessage() {
       let type = this.get('messageType');
       if (type === 'custom') {
