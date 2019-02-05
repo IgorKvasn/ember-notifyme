@@ -1,6 +1,6 @@
 {
   "name": "ember-notifyme",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "description": "Show notifications in your Ember app.",
   "scripts": {
     "build": "ember build",
