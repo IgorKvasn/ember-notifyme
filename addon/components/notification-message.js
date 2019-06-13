@@ -18,6 +18,7 @@ import {
 import Component from '@ember/component';
 import layout from '../templates/components/notification-message';
 import configuration from '../configuration';
+import velocity from 'velocity-animate';
 
 export default Component.extend({
   classNames: ['notification-message'],

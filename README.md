@@ -14,13 +14,7 @@ DEMO: [http://igorkvasn.github.io/ember-notifyme/](http://igorkvasn.github.io/em
 Installation
 ------------------------------------------------------------------------------
 
-<<<<<<< HEAD
  `ember install ember-notifyme`
-=======
-* Ember.js v2.18 or above
-* Ember CLI v2.13 or above
-* Node.js v8 or above
->>>>>>> f2492da... message
 
 ## Usage
 
@@ -53,7 +47,6 @@ To hide all notifications:
  this.notifications.removeAll();
 ```
 
-<<<<<<< HEAD
 **Note:** by default, **FontAwesome** must be included in your project - to use different icon set, see [Global Configuration](https://github.com/IgorKvasn/ember-notifyme/blob/master/README.md#global-configuration) section below for a configuration hints
 
 ### Callbacks
@@ -141,15 +134,5 @@ ENV['ember-notifyme']={
 
 * `ember serve`
 * Visit the dummy application at [http://localhost:4200](http://localhost:4200).
-=======
-Contributing
-------------------------------------------------------------------------------
-
-See the [Contributing](CONTRIBUTING.md) guide for details.
-
-
-License
-------------------------------------------------------------------------------
->>>>>>> f2492da... message
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
