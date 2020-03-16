@@ -8,6 +8,10 @@ import {
 import Service from '@ember/service';
 import NotificationMessage from '../objects/notification-message';
 import configuration from '../configuration';
+import { next } from '@ember/runloop';
+import {MESSAGE_ID_ATTRIBUTE_NAME} from '../components/notification-message';
+import $ from 'jquery';
+
 
 export default Service.extend({
 
@@ -51,7 +55,7 @@ export default Service.extend({
       onCloseTimeout: options.onCloseTimeout || function() {},
       closeOnClick: options.closeOnClick,
       icon: options.icon,
-      id: options.id,
+      id: options.id || Math.random(),
       data: options.data || {}
     });
 
@@ -87,6 +91,13 @@ export default Service.extend({
 
   removeMessageFromList(message) {
     this.get('messages').removeObject(message);
+
+    next(this, ()=>{
+      let element = document.querySelector(`[${MESSAGE_ID_ATTRIBUTE_NAME}="${message.id}"]`);
+      if (isPresent(element)){
+        $(element).remove();
+      }
+    });
   },
 
   removeMessage(message, force = false) {

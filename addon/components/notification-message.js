@@ -20,9 +20,12 @@ import layout from '../templates/components/notification-message';
 import configuration from '../configuration';
 import velocity from 'velocity-animate';
 
+export const MESSAGE_ID_ATTRIBUTE_NAME = 'data-embernotifyme-message-id';
+
 export default Component.extend({
   classNames: ['notification-message'],
   classNameBindings: ['message.type'],
+  attributeBindings: ['messageId:'+MESSAGE_ID_ATTRIBUTE_NAME],
 
   layout,
 
@@ -34,6 +37,8 @@ export default Component.extend({
   closeIconHTML: null,
   messageIcon: null,
   clickable: alias('message.onClick'),
+
+  messageId: alias('message.id'),
 
   didInsertElement() {
     this._super(...arguments);
