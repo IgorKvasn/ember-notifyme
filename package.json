@@ -59,10 +59,10 @@
     "test": "tests"
   },
   "dependencies": {
+    "ember-auto-import": "^1.4.0",
     "ember-cli-babel": "^7.7.3",
     "ember-cli-htmlbars": "^3.0.1",
-    "velocity-animate": "^1.5.2",
-    "ember-auto-import": "^1.4.0"
+    "velocity-animate": "^1.5.2"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"

@@ -25,7 +25,7 @@ export const MESSAGE_ID_ATTRIBUTE_NAME = 'data-embernotifyme-message-id';
 export default Component.extend({
   classNames: ['notification-message'],
   classNameBindings: ['message.type'],
-  attributeBindings: ['messageId:'+MESSAGE_ID_ATTRIBUTE_NAME],
+  attributeBindings: ['messageId:' + MESSAGE_ID_ATTRIBUTE_NAME],
 
   layout,
 
@@ -40,8 +40,17 @@ export default Component.extend({
 
   messageId: alias('message.id'),
 
+  _handleMouseEnterFn: null,
+  _handleMouseLeaveFn: null,
+
   didInsertElement() {
     this._super(...arguments);
+
+    this.set('_handleMouseEnterFn', this.handleMouseEnter.bind(this));
+    this.set('_handleMouseLeaveFn', this.handleMouseLeave.bind(this));
+
+    this.element.addEventListener('mouseenter', this.get('_handleMouseEnterFn'));
+    this.element.addEventListener('mouseleave', this.get('_handleMouseLeaveFn'));
 
     next(() => {
 
@@ -76,6 +85,14 @@ export default Component.extend({
     });
   },
 
+  willDestroyElement() {
+    this._super(...arguments);
+
+    this.element.removeEventListener('mouseenter', this.get('_handleMouseEnterFn'));
+    this.element.removeEventListener('mouseleave', this.get('_handleMouseLeaveFn'));
+
+  },
+
   removeMeObserver: observer('message.removeMe', function() {
     if (this.get('message.removeMe') === true) {
       this.animateRemoval(() => {
@@ -84,14 +101,14 @@ export default Component.extend({
     }
   }),
 
-  mouseEnter() {
+  handleMouseEnter() {
     if (!this.get('message.sticky')) {
       this.stopCountdown();
       this.notifications.pauseMessageTimeout(this.get('message'));
     }
   },
 
-  mouseLeave() {
+  handleMouseLeave() {
     if (!this.get('message.sticky')) {
       this.startCountdown();
       this.notifications.startMessageTimer(this.get('message'));
