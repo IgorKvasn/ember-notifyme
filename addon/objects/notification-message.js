@@ -13,6 +13,6 @@ export default EmberObject.extend({
   //internal
   closeTimer: null,
   startTimeoutTime: null,
-
+  timestamp: null
 
 });

@@ -38,13 +38,16 @@ export default Component.extend({
   messageIcon: null,
   clickable: alias('message.onClick'),
 
-  messageId: alias('message.id'),
+
 
   _handleMouseEnterFn: null,
   _handleMouseLeaveFn: null,
 
   didInsertElement() {
     this._super(...arguments);
+
+
+    this.set('messageId', `${this.message.id}-${this.message.timestamp}`);
 
     this.set('_handleMouseEnterFn', this.handleMouseEnter.bind(this));
     this.set('_handleMouseLeaveFn', this.handleMouseLeave.bind(this));

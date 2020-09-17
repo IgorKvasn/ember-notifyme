@@ -56,7 +56,8 @@ export default Service.extend({
       closeOnClick: options.closeOnClick,
       icon: options.icon,
       id: options.id || Math.random(),
-      data: options.data || {}
+      data: options.data || {},
+      timestamp: +new Date()
     });
 
     this.get('messages').addObject(messageObject);
@@ -93,7 +94,7 @@ export default Service.extend({
     this.get('messages').removeObject(message);
 
     next(this, ()=>{
-      let element = document.querySelector(`[${MESSAGE_ID_ATTRIBUTE_NAME}="${message.id}"]`);
+      let element = document.querySelector(`[${MESSAGE_ID_ATTRIBUTE_NAME}="${message.id}-${message.timestamp}"]`);
       if (isPresent(element)){
         $(element).remove();
       }
