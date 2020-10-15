@@ -119,13 +119,13 @@ export default Component.extend({
   },
 
   animateRemoval(onAnimationDone) {
-    Velocity(this.element, {
+    velocity(this.element, {
       scale: 1.05
     },{
       duration: 200
     });
 
-    Velocity(this.element, {
+    velocity(this.element, {
       scale: 0
     }, {
       duration: 500,
@@ -133,16 +133,15 @@ export default Component.extend({
     });
   },
 
-  stopCountdown() {
-    let $element = $(this.element);
-    $element.find(".countdown").velocity("stop", true);
+  stopCountdown() {    
+    velocity($(this.element).find(".countdown")[0], "stop", true);
   },
 
   startCountdown() {
 
     schedule('afterRender', this, function() {
       let $element = $(this.element);
-      Velocity($element.find(".countdown")[0], {
+      velocity($element.find(".countdown")[0], {
         width: $element.width()
       }, {
         duration: this.get('message.timeout'),
