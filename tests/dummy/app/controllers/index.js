@@ -40,7 +40,7 @@ export default Controller.extend({
       this.notifications.removeAll(exceptIds, true);
     },
 
-    addMessage() {      
+    addMessage() {
       let type = this.get('messageType');
       if (type === 'custom') {
         type = this.get('customType');

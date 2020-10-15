@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $ from 'cash-dom';
 import {
   observer
 } from '@ember/object';
@@ -119,18 +119,18 @@ export default Component.extend({
   },
 
   animateRemoval(onAnimationDone) {
-    $(this.element)
-      .velocity({
-        scale: 1.05
-      }, {
-        duration: 200
-      })
-      .velocity({
-        scale: 0
-      }, {
-        duration: 500,
-        complete: onAnimationDone
-      });
+    Velocity(this.element, {
+      scale: 1.05
+    },{
+      duration: 200
+    });
+
+    Velocity(this.element, {
+      scale: 0
+    }, {
+      duration: 500,
+      complete: onAnimationDone
+    });
   },
 
   stopCountdown() {
@@ -142,7 +142,7 @@ export default Component.extend({
 
     schedule('afterRender', this, function() {
       let $element = $(this.element);
-      $element.find(".countdown").velocity({
+      Velocity($element.find(".countdown")[0], {
         width: $element.width()
       }, {
         duration: this.get('message.timeout'),

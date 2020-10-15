@@ -10,7 +10,7 @@ import NotificationMessage from '../objects/notification-message';
 import configuration from '../configuration';
 import { next } from '@ember/runloop';
 import {MESSAGE_ID_ATTRIBUTE_NAME} from '../components/notification-message';
-import $ from 'jquery';
+import $ from 'cash-dom';
 
 
 export default Service.extend({
