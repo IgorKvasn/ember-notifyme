@@ -1,19 +1,19 @@
 import $ from 'cash-dom';
 import {
-  observer
+	observer
 } from '@ember/object';
 import {
-  isEmpty
+	isEmpty
 } from '@ember/utils';
 import {
-  htmlSafe
+	htmlSafe
 } from '@ember/template';
 import {
-  next,
-  schedule
+	next,
+	schedule
 } from '@ember/runloop';
 import {
-  alias
+	alias
 } from '@ember/object/computed';
 import Component from '@ember/component';
 import layout from '../templates/components/notification-message';
@@ -23,151 +23,153 @@ import velocity from 'velocity-animate';
 export const MESSAGE_ID_ATTRIBUTE_NAME = 'data-embernotifyme-message-id';
 
 export default Component.extend({
-  classNames: ['notification-message'],
-  classNameBindings: ['message.type'],
-  attributeBindings: ['messageId:' + MESSAGE_ID_ATTRIBUTE_NAME],
+	classNames: ['notification-message'],
+	classNameBindings: ['message.type'],
+	attributeBindings: ['messageId:' + MESSAGE_ID_ATTRIBUTE_NAME],
 
-  layout,
+	layout,
 
-  message: null,
-  animationDurationCss: null,
-  cssAnimationPlayProperty: null,
+	message: null,
+	animationDurationCss: null,
+	cssAnimationPlayProperty: null,
 
-  removeMe: false,
-  closeIconHTML: null,
-  messageIcon: null,
-  clickable: alias('message.onClick'),
-
-
-
-  _handleMouseEnterFn: null,
-  _handleMouseLeaveFn: null,
-
-  didInsertElement() {
-    this._super(...arguments);
+	removeMe: false,
+	closeIconHTML: null,
+	messageIcon: null,
+	clickable: alias('message.onClick'),
 
 
-    this.set('messageId', `${this.message.id}-${this.message.timestamp}`);
 
-    this.set('_handleMouseEnterFn', this.handleMouseEnter.bind(this));
-    this.set('_handleMouseLeaveFn', this.handleMouseLeave.bind(this));
+	_handleMouseEnterFn: null,
+	_handleMouseLeaveFn: null,
 
-    this.element.addEventListener('mouseenter', this.get('_handleMouseEnterFn'));
-    this.element.addEventListener('mouseleave', this.get('_handleMouseLeaveFn'));
+	didInsertElement() {
+		this._super(...arguments);
 
-    next(() => {
 
-      if (this.get('isDestroyed') || this.get('isDestroying')) {
-        return;
-      }
+		this.set('messageId', `${this.message.id}-${this.message.timestamp}`);
 
-      this.startCountdown();
+		this.set('_handleMouseEnterFn', this.handleMouseEnter.bind(this));
+		this.set('_handleMouseLeaveFn', this.handleMouseLeave.bind(this));
 
-      let message = this.get('message');
-      let timeout = message.get('timeout');
+		this.element.addEventListener('mouseenter', this.get('_handleMouseEnterFn'));
+		this.element.addEventListener('mouseleave', this.get('_handleMouseLeaveFn'));
 
-      let sticky = message.get('sticky');
-      if (!sticky) {
-        let animationDurationCss = `animation-duration: ${timeout}ms; -webkit-animation-duration: ${timeout}ms;`;
-        this.set('animationDurationCss', htmlSafe(animationDurationCss));
-      }
+		next(() => {
 
-      let messageIconSafe = message.get('icon');
-      if (isEmpty(messageIconSafe)) {
-        messageIconSafe = configuration.getMessageIcon(this.get('message.type'));
-      }
-      messageIconSafe = htmlSafe(messageIconSafe);
-      this.set('messageIcon', messageIconSafe);
+			if (this.get('isDestroyed') || this.get('isDestroying')) {
+				return;
+			}
 
-      this.set('closeIconHTML', configuration.getCloseIconHTML());
+			this.startCountdown();
 
-      if (message.get('htmlContent')) {
-        message.set('message', htmlSafe(message.get('message')));
-      }
+			let message = this.get('message');
+			let timeout = message.get('timeout');
 
-    });
-  },
+			let sticky = message.get('sticky');
+			if (!sticky) {
+				let animationDurationCss = `animation-duration: ${timeout}ms; -webkit-animation-duration: ${timeout}ms;`;
+				this.set('animationDurationCss', htmlSafe(animationDurationCss));
+			}
 
-  willDestroyElement() {
-    this._super(...arguments);
+			let messageIconSafe = message.get('icon');
+			if (isEmpty(messageIconSafe)) {
+				messageIconSafe = configuration.getMessageIcon(this.get('message.type'));
+			}
+			messageIconSafe = htmlSafe(messageIconSafe);
+			this.set('messageIcon', messageIconSafe);
 
-    this.element.removeEventListener('mouseenter', this.get('_handleMouseEnterFn'));
-    this.element.removeEventListener('mouseleave', this.get('_handleMouseLeaveFn'));
+			this.set('closeIconHTML', configuration.getCloseIconHTML());
 
-  },
+			if (message.get('htmlContent')) {
+				message.set('message', htmlSafe(message.get('message')));
+			}
 
-  removeMeObserver: observer('message.removeMe', function() {
-    if (this.get('message.removeMe') === true) {
-      this.animateRemoval(() => {
-        this.notifications.removeMessageFromList(this.get('message'));
-      });
-    }
-  }),
+		});
+	},
 
-  handleMouseEnter() {
-    if (!this.get('message.sticky')) {
-      this.stopCountdown();
-      this.notifications.pauseMessageTimeout(this.get('message'));
-    }
-  },
+	willDestroyElement() {
+		this._super(...arguments);
 
-  handleMouseLeave() {
-    if (!this.get('message.sticky')) {
-      this.startCountdown();
-      this.notifications.startMessageTimer(this.get('message'));
-    }
-  },
+		this.element.removeEventListener('mouseenter', this.get('_handleMouseEnterFn'));
+		this.element.removeEventListener('mouseleave', this.get('_handleMouseLeaveFn'));
 
-  animateRemoval(onAnimationDone) {
-    velocity(this.element, {
-      scale: 1.05
-    },{
-      duration: 200
-    });
+	},
 
-    velocity(this.element, {
-      scale: 0
-    }, {
-      duration: 500,
-      complete: onAnimationDone
-    });
-  },
+	removeMeObserver: observer('message.removeMe', function() {
+		if (this.get('message.removeMe') === true) {
+			this.animateRemoval(() => {
+				this.notifications.removeMessageFromList(this.get('message'));
+			});
+		}
+	}),
 
-  stopCountdown() {    
-    velocity($(this.element).find(".countdown")[0], "stop", true);
-  },
+	handleMouseEnter() {
+		if (!this.get('message.sticky')) {
+			this.stopCountdown();
+			this.notifications.pauseMessageTimeout(this.get('message'));
+		}
+	},
 
-  startCountdown() {
+	handleMouseLeave() {
+		if (!this.get('message.sticky')) {
+			this.startCountdown();
+			this.notifications.startMessageTimer(this.get('message'));
+		}
+	},
 
-    schedule('afterRender', this, function() {
-      let $element = $(this.element);
-      velocity($element.find(".countdown")[0], {
-        width: $element.width()
-      }, {
-        duration: this.get('message.timeout'),
-        easing: "linear"
-      });
-    });
-  },
+	animateRemoval(onAnimationDone) {
+		velocity(this.element, {
+			scale: 1.05
+		}, {
+			duration: 200
+		});
 
-  actions: {
+		velocity(this.element, {
+			scale: 0
+		}, {
+			duration: 500,
+			complete: onAnimationDone
+		});
+	},
 
-    messageClicked() {
-      let message = this.get('message');
-      let onClick = message.get('onClick');
-      onClick(message);
+	stopCountdown() {
+		velocity($(this.element).find(".countdown")[0], "stop", true);
+	},
 
-      if (message.get('closeOnClick') === true) {
-        this.notifications.removeMessage(message);
-      }
-    },
+	startCountdown() {
+		if (this.get('message.sticky') === true) {
+			return;
+		}
+		schedule('afterRender', this, function() {
+			let $element = $(this.element);
+			velocity($element.find(".countdown")[0], {
+				width: $element.width()
+			}, {
+				duration: this.get('message.timeout'),
+				easing: "linear"
+			});
+		});
+	},
 
-    messageClosed() {
-      let message = this.get('message');
-      let onClose = message.get('onClose');
-      onClose(message);
-      this.notifications.removeMessage(message);
-    }
+	actions: {
 
-  }
+		messageClicked() {
+			let message = this.get('message');
+			let onClick = message.get('onClick');
+			onClick(message);
+
+			if (message.get('closeOnClick') === true) {
+				this.notifications.removeMessage(message);
+			}
+		},
+
+		messageClosed() {
+			let message = this.get('message');
+			let onClose = message.get('onClose');
+			onClose(message);
+			this.notifications.removeMessage(message);
+		}
+
+	}
 });
