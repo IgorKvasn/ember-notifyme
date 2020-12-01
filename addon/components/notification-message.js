@@ -134,7 +134,10 @@ export default Component.extend({
 	},
 
 	stopCountdown() {
-		velocity($(this.element).find(".countdown")[0], "stop", true);
+		let $countdown = $(this.element).find(".countdown");
+		if ($countdown.length !== 0) {
+			velocity($countdown[0], "stop", true);
+		}
 	},
 
 	startCountdown() {
