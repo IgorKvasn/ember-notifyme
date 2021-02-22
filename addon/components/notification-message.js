@@ -19,6 +19,7 @@ import Component from '@ember/component';
 import layout from '../templates/components/notification-message';
 import configuration from '../configuration';
 import velocity from 'velocity-animate';
+import {inject as service} from '@ember/service';
 
 export const MESSAGE_ID_ATTRIBUTE_NAME = 'data-embernotifyme-message-id';
 
@@ -28,6 +29,8 @@ export default Component.extend({
 	attributeBindings: ['messageId:' + MESSAGE_ID_ATTRIBUTE_NAME],
 
 	layout,
+
+	notifications: service('notification-service'),
 
 	message: null,
 	animationDurationCss: null,
