@@ -1,7 +1,10 @@
 import { isPresent } from '@ember/utils';
 import Controller from '@ember/controller';
+import {inject as service} from '@ember/service';
 
 export default Controller.extend({
+
+  notifications: service('notification-service'),
 
   message: "Hello world!",
   timeout: 3000,
@@ -13,6 +16,7 @@ export default Controller.extend({
   customIcon: null,
   id: null,
   exceptIds: null,
+
 
   actions: {
 
