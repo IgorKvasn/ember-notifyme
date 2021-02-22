@@ -30,7 +30,6 @@
     "ember-cli-sri": "^2.1.1",
     "ember-cli-test-loader": "^2.2.0",
     "ember-cli-uglify": "^3.0.0",
-    "ember-cli-update": "^0.34.10",
     "ember-cli-windows-addon": "^1.3.1",
     "ember-export-application-global": "^2.0.1",
     "ember-load-initializers": "^2.1.1",
