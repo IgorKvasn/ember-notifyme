@@ -1,7 +1,7 @@
 {{! template-lint-disable }}
 <div>
   <label>Message:</label>
-  {{input value=message}}
+  <Input @value={{this.message}}/>
 </div>
 
 <div>
@@ -11,26 +11,26 @@
     <label>Info</label>
     {{radio-button
       value="info"
-      groupValue=messageType}}
+      groupValue=this.messageType}}
   </li>
   <li>
     <label>Success</label>
         {{radio-button
         value="success"
-        groupValue=messageType}}
+        groupValue=this.messageType}}
   </li>
   <li>
     <label>Error</label>
         {{radio-button
         value="error"
-        groupValue=messageType}}
+        groupValue=this.messageType}}
   </li>
   <li>
     <label>Custom:</label>
     {{radio-button
     value="custom"
-    groupValue=messageType}}
-    {{input value=customType}}
+    groupValue=this.messageType}}
+    <Input @value={{this.customType}}></Input>
   </li>
 </ul>
 
@@ -38,33 +38,33 @@
 
 <div>
   <label>ID:</label>
-  {{input value=id}}
+  <Input @value={{this.id}}></Input>
 </div>
 
 <div>
   <label>Timeout:</label>
-  {{input value=timeout type="number"}}
+  <Input @value={{this.timeout}} @type="number"></Input>
 </div>
 
 
 <div>
   <label>Custom icon (fontawesome icon):</label>
-  {{input value=customIcon type="text"}}
+  <Input @value={{this.customIcon}} @type="text"></Input>
 </div>
 
 <div>
   <label>Sticky:</label>
-  {{input type="checkbox" name="sticky" checked=sticky}}
+  <Input @type="checkbox" name="sticky" @checked={{this.sticky}}></Input>
 </div>
 
 <div>
   <label>HTML content:</label>
-  {{input type="checkbox" name="htmlContent" checked=htmlContent}}
+  <Input @type="checkbox" name="htmlContent" @checked={{this.htmlContent}}></Input>
 </div>
 
 <div>
   <label>closeOnClick:</label>
-  {{input type="checkbox" name="closeOnClick" checked=closeOnClick}}
+  <Input @type="checkbox" name="closeOnClick" @checked={{this.closeOnClick}}></Input>
 </div>
 
 <div>
@@ -80,7 +80,7 @@
   </button>
   <div>
     <label>Except IDs (comma separated):</label>
-    {{input value=exceptIds}}
+    <Input @value={{this.exceptIds}}></Input>
   </div>
 </div>
 
@@ -91,5 +91,5 @@
   Note2: don't worry - colors & icons can be easily customized :)
 </p>
 
-{{notification-panel}}
+<NotificationPanel></NotificationPanel>
 {{! template-lint-enable }}
